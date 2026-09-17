@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -27,6 +30,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is provided by GitHub.
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: out # next build (output: "export") writes the static site here.
+          token: ${{ secrets.GITHUB_TOKEN }} # This is provided by GitHub.
+          branch: gh-pages # The branch the action should deploy to.
+          folder: out # next build (output: "export") writes the static site here.
